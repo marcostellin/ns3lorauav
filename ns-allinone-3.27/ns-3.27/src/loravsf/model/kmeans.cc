@@ -2,6 +2,7 @@
 // #include <stdlib.h>
 // #include <math.h>
 
+#define HUGE_VAL 10000000
 #include "ns3/kmeans.h"
  
 //typedef struct { double x, y; int group; uint32_t id; } point_t, *point;
@@ -86,9 +87,11 @@ inline double dist2(point a, point b)
 inline int
 nearest(point pt, point cent, int n_cluster, double *d2)
 {
-	int i, min_i;
+	int i;
+  int min_i = -1;
 	point c;
-	double d, min_d;
+	double d;
+  double min_d = HUGE_VAL;
  
 #	define for_n for (c = cent, i = 0; i < n_cluster; i++, c++)
 	for_n {
@@ -132,7 +135,8 @@ void kpp(point pts, int len, point cent, int n_cent)
  
 point lloyd(point pts, int len, int n_cluster)
 {
-	int i, j, min_i;
+	int i, j;
+  int min_i = -1;
 	int changed;
  
 	point cent = (point) malloc(sizeof(point_t) * n_cluster), p, c;
