@@ -1,0 +1,8 @@
+[settings]
+
+time = 2000
+numTeams = 3
+numUavs = 6
+numMembers = 20
+size = 2000
+runs = 4

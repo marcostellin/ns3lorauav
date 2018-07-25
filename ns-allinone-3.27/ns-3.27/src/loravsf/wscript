@@ -1,0 +1,40 @@
+# -*- Mode: python; py-indent-offset: 4; indent-tabs-mode: nil; coding: utf-8; -*-
+
+# def options(opt):
+#     pass
+
+# def configure(conf):
+#     conf.check_nonfatal(header_name='stdint.h', define_name='HAVE_STDINT_H')
+
+def build(bld):
+    module = bld.create_ns3_module('loravsf', ['mobility', 'olsr', 'lorawan'])
+    module.source = [
+        'model/virtual-springs-2d-mobility-model.cc',
+        'model/lora-eds-monitor.cc',
+        'model/link-budget-estimator.cc',
+        'model/load-monitor.cc',
+        'model/seeds-manager.cc',
+        'model/kmeans.cc',
+        ]
+
+    module_test = bld.create_ns3_module_test_library('loravsf')
+    module_test.source = [
+        #'test/loravsf-test-suite.cc',
+        ]
+
+    headers = bld(features='ns3header')
+    headers.module = 'loravsf'
+    headers.source = [
+        'model/virtual-springs-2d-mobility-model.h',
+        'model/lora-eds-monitor.h',
+        'model/link-budget-estimator.h',
+        'model/load-monitor.h',
+        'model/seeds-manager.h',
+        'model/kmeans.h',
+        ]
+
+    # if bld.env.ENABLE_EXAMPLES:
+    #     bld.recurse('examples')
+
+    # bld.ns3_python_bindings()
+

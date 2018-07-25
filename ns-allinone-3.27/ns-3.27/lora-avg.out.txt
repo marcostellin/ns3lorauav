@@ -1,0 +1,2 @@
+sent,recv,psr,delayGw,delayBs
+1002,867,0.865269,51.4556,1543.66
