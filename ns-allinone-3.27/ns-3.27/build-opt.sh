@@ -1,4 +1,4 @@
 #!/bin/bash
 
-./waf configure $NS3CONFIG $NS3OPT
+./waf configure --build-profile=optimized --out=build/optimized
 ./waf build
